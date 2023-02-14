@@ -1,9 +1,16 @@
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { StockOverviewPage } from './pages/StockOverviewPage'
 import './App.css'
+
 
 export default function App() {
   return (
     <main>
-      <h2 className='mt-5'>Hi</h2>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<StockOverviewPage />}/>
+        </Routes>
+      </BrowserRouter>
     </main>
   )
 }

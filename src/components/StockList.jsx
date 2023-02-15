@@ -3,6 +3,7 @@ import finnHub from "../api/finnHub"
 
 
 export const StockList = () => {
+  const [stock, setStock] = useState()
   const [watchList, setWatchList] = useState(['GOOGL', 'MSFT', 'AMZN'])
 
   useEffect(() => {
@@ -14,6 +15,7 @@ export const StockList = () => {
           }
         })
         console.log(response)
+        setStock(response.data)
       } catch (err) {
 
       }

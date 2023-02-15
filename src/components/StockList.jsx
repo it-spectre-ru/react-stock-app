@@ -10,18 +10,12 @@ export const StockList = () => {
     let isMounted = true
     const fetchData = async () => {
       try {
-        const responses = Promise.all(finnHub.get('/quote', {
-          params: {
-            symbol: 'GOOGL'
-          }
-        }), finnHub.get('/quote', {
-          params: {
-            symbol: 'MSFT'
-          }
-        }), finnHub.get('/quote', {
-          params: {
-            symbol: 'AMZN'
-          }
+        const responses = Promise.all(watchList.map((stock) => {
+          return finnHub.get('/quote', {
+            params: {
+              symbol: stock
+            }
+          })
         }))
 
         console.log(responses)

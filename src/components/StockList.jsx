@@ -7,6 +7,7 @@ export const StockList = () => {
   const [watchList, setWatchList] = useState(['GOOGL', 'MSFT', 'AMZN'])
 
   useEffect(() => {
+    let isMounted = true
     const fetchData = async () => {
       try {
         const response = await finnHub.get('/quote', {
@@ -15,12 +16,17 @@ export const StockList = () => {
           }
         })
         console.log(response)
-        setStock(response.data)
+        if (isMounted) {
+          setStock(response.data)
+        }
+
       } catch (err) {
 
       }
     }
     fetchData()
+
+    return () => (isMounted = false)
   }, [])
 
   return <div>StockList</div>

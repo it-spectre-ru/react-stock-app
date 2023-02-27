@@ -10,7 +10,7 @@ export const StockList = () => {
     let isMounted = true
     const fetchData = async () => {
       try {
-        const responses = Promise.all(watchList.map((stock) => {
+        const responses = await Promise.all(watchList.map((stock) => {
           return finnHub.get('/quote', {
             params: {
               symbol: stock
